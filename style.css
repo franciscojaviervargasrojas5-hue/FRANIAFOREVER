@@ -1,0 +1,350 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0f0b15;
+  color: #f1e6ee;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Corazones animados de fondo */
+.heart-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  color: rgba(230, 57, 70, 0.35);
+  font-size: 1.2rem;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Transiciones entre pantallas */
+.screen {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.screen.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.screen.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Pantalla de Bloqueo */
+#lockScreen {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.lock-card {
+  background: rgba(26, 20, 35, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 75, 110, 0.25);
+  border-radius: 24px;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 75, 110, 0.15);
+}
+
+.lock-icon {
+  font-size: 2.5rem;
+  color: #ff4b6e;
+  margin-bottom: 12px;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.lock-card h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.lock-card p {
+  font-size: 0.9rem;
+  color: #b3a2b8;
+  margin-bottom: 20px;
+}
+
+/* Indicadores de PIN */
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ff4b6e;
+  transition: all 0.2s ease;
+}
+
+.dot.filled {
+  background-color: #ff4b6e;
+  box-shadow: 0 0 10px #ff4b6e;
+}
+
+/* Teclado numérico */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.key {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.key:hover {
+  background: rgba(255, 75, 110, 0.25);
+  border-color: #ff4b6e;
+}
+
+.key:active {
+  transform: scale(0.92);
+}
+
+.key.action {
+  font-size: 1rem;
+  background: transparent;
+  border-color: transparent;
+  color: #b3a2b8;
+}
+
+.error-msg {
+  color: #ff4b72;
+  font-size: 0.85rem;
+  margin-top: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-msg.visible {
+  opacity: 1;
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+/* PANTALLA PRINCIPAL */
+#mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.hero-header h1 {
+  font-size: 2.2rem;
+  color: #ff4b6e;
+  text-shadow: 0 0 15px rgba(255, 75, 110, 0.4);
+  margin-bottom: 8px;
+}
+
+.hero-header .subtitle {
+  color: #cbb3cc;
+  font-size: 1rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.section-card {
+  background: rgba(26, 20, 35, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 75, 110, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.section-card h2 {
+  color: #ff4b6e;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Reproductor de Video */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.video-wrapper video {
+  width: 100%;
+  display: block;
+  max-height: 450px;
+}
+
+/* Galería Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  padding: 12px 8px 8px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #fff;
+}
+
+/* Carta de Amor */
+.letter-card p {
+  line-height: 1.7;
+  color: #e2d3e3;
+  font-size: 1rem;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #ff4b6e;
+}
+
+/* Botón flotante de música */
+.music-float-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ff4b6e;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 75, 110, 0.5);
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.music-float-btn.playing {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #8c7a90;
+  font-size: 0.85rem;
+}
