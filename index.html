@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Historia Especial ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Fondo de corazones flotantes -->
+  <div class="heart-bg" id="heartBg"></div>
+
+  <!-- PANTALLA DE BLOQUEO -->
+  <div id="lockScreen" class="screen active">
+    <div class="lock-card">
+      <div class="lock-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h2>Nuestra Fecha Especial</h2>
+      <p>Ingresa nuestro PIN de 4 dígitos</p>
+      
+      <div class="pin-display">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <div class="keypad">
+        <button class="key" onclick="pressKey('1')">1</button>
+        <button class="key" onclick="pressKey('2')">2</button>
+        <button class="key" onclick="pressKey('3')">3</button>
+        <button class="key" onclick="pressKey('4')">4</button>
+        <button class="key" onclick="pressKey('5')">5</button>
+        <button class="key" onclick="pressKey('6')">6</button>
+        <button class="key" onclick="pressKey('7')">7</button>
+        <button class="key" onclick="pressKey('8')">8</button>
+        <button class="key" onclick="pressKey('9')">9</button>
+        <button class="key action" onclick="clearPin()"><i class="fas fa-trash-alt"></i></button>
+        <button class="key" onclick="pressKey('0')">0</button>
+        <button class="key action" onclick="deleteKey()"><i class="fas fa-backspace"></i></button>
+      </div>
+
+      <p id="errorMsg" class="error-msg">Fecha incorrecta ❤️ Intenta de nuevo</p>
+    </div>
+  </div>
+
+  <!-- PANTALLA PRINCIPAL -->
+  <div id="mainContent" class="screen hidden">
+    <!-- Música de Fondo -->
+    <audio id="bgMusic" loop src="cancion.mp3"></audio>
+    <button id="musicBtn" class="music-float-btn" onclick="toggleMusic()">
+      <i class="fas fa-music"></i>
+    </button>
+
+    <header class="hero-header">
+      <h1>Para Kenia ❤️</h1>
+      <p class="subtitle">Cada momento a tu lado es mi lugar favorito</p>
+    </header>
+
+    <main class="container">
+      <!-- Sección del Video -->
+      <section class="section-card video-card">
+        <h2><i class="fas fa-film"></i> Un Video Especial Para Ti</h2>
+        <div class="video-wrapper">
+          <video id="memoryVideo" controls poster="https://picsum.photos/800/450?romantic">
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta el reproductor de video.
+          </video>
+        </div>
+      </section>
+
+      <!-- Galería de Galería de Fotos -->
+      <section class="section-card">
+        <h2><i class="fas fa-images"></i> Galería de Recuerdos</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="foto1.jpg.jpeg" alt="Recuerdo 1">
+            <div class="caption">besito para ti amor👄</div>
+          </div>
+          <div class="gallery-item">
+            <img src="foto2.jpg.jpeg" alt="Recuerdo 2">
+            <div class="caption">recuerdo hermoso en el cine🌻🌻👄</div>
+          </div>
+          <div class="gallery-item">
+            <img src="foto3.jpg.jpeg" alt="Recuerdo 3">
+            <div class="caption">sonriendo en casita💘</div>
+          </div>
+          <div class="gallery-item">
+            <img src="foto4.jpg.jpeg" alt="Recuerdo 4">
+            <div class="caption">cada inicio junto a ti mi FRANIA ❤️</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mensaje Especial -->
+      <section class="section-card letter-card">
+        <h2><i class="fas fa-envelope-open-text"></i> Para el amor de mi vida Kenia uwu ❤</h2>
+        <p>Gracias por estar a lado mio amorshi en este camino tan dificil que es la vida, amanecer a tu lado, aprender a tu lado, experimentar, gozar, reir, llorar todo contigo es hermoso.Gracias por cada sonrisa, por cada abrazo y por hacer que cada día juntos sea inolvidable. Esta es solo un detalle del amor que siento por ti, te amo demasiado mi amor hermosa, una y mil veces te elegiré y daré todo por ti mi vida, la vida nos da lecciones, de las que tenemos que corregirnos todos los dias, y yo a tu lado estoy aprendiendo de cada uno de ellos, te aamo Frania, y prometo seguir mejorando cada dia por nosotros, y todo lo bueno que esta por venir.</p>
+        <div class="signature">Con todo mi amor, Francisco, tu bichito siuuuuuuu ❤️</div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Hecho con ❤️ especialmente para ti</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
